@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris App</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 900px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        hr {
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #007bb5;
+        } 
+
+        .form-sections {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Iris App</h1>
+        <hr>
+        {% if result %}
+        <h1>{{ result }}</h1>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-sections">
+                <div>
+                    Age: <input type="text" name="age" required><br>
+                    Sex:
+                    <select name="sex" required>
+                        <option  value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select><br>
+                    cp: <input type="text" name="cp" required><br>
+                    trestbps: <input type="text" name="trestbps" required><br>
+                    Chol: <input type="text" name="chol" required><br>
+                    FBS: <input type="text" name="fbs" required><br>
+                    restecg: <input type="text" name="restecg" required><br>
+                </div>
+                <div>
+                    thalach: <input type="text" name="thalach" required><br>
+                    exang: <input type="text" name="exang" required><br>
+                    oldpeak: <input type="text" name="oldpeak" required><br>
+                    slope: <input type="text" name="slope" required><br>
+                    ca: <input type="text" name="ca" required><br>
+                    thal: <input type="text" name="thal" required><br>
+                </div>
+            </div>
+            <input type="submit" class="input">
+            <button type="button" class="input" onclick="window.location.reload();">Refresh</button>
+        </form>
+    </div>
+</body>
+</html>

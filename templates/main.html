@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction</title>
+    <style>
+        body {
+            font-family: 'Elephant', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 15px;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Disease Prediction From Symptoms</h1>
+        <form action="result">
+            <label for="symptom1" name="symptom1" required>Symptom 1</label>
+            <select id="symptom1"></select>
+
+            <label for="symptom2" name="symptom2">Symptom 2</label>
+            <select id="symptom2"></select>
+
+            <label for="symptom3" name="symptom3">Symptom 3</label>
+            <select id="symptom3"></select>
+
+            <label for="symptom4" name="symptom4">Symptom 4</label>
+            <select id="symptom4"></select>
+
+            <label for="symptom5" name="symptom5">Symptom 5</label>
+            <select id="symptom5"></select>
+
+            <button type="button" onclick="predictDisease()">Predict</button>
+
+            <label for="result">Result</label>
+            <textarea id="result" readonly></textarea>
+        </form>
+    </div>
+
+    <script>
+        // Dynamically add options to select elements
+        var symptoms = ['itching', 'skin_rash', 'nodal_skin_eruptions', 'continuous_sneezing', 'shivering',
+            'joint_pain', 'vomiting', 'headache', 'mucoid_sputum', 'blurred_and_distorted_vision', 'abdominal_pain',
+            'muscle_weakness', 'weight_loss', 'swollen_legs', 'watering_from_eyes', 'palpitations', 'internal_itching',
+            'loss_of_smell', 'foul_smell_of urine'];
+
+        symptoms.forEach(function (symptom) {
+            for (var i = 1; i <= 5; i++) {
+                var select = document.getElementById('symptom' + i);
+                var option = document.createElement('option');
+                option.text = symptom;
+                option.value = symptom;
+                select.add(option);
+            }
+        });
+
+        function predictDisease() {
+            var selectedSymptoms = [];
+            for (var i = 1; i <= 5; i++) {
+                var symptom = document.getElementById('symptom' + i).value;
+                selectedSymptoms.push(symptom);
+            }
+
+            // Implement your disease prediction logic here
+            var predictedDisease = predictDiseaseManually(selectedSymptoms);
+
+            // Update the result textarea
+            document.getElementById('result').value = predictedDisease;
+        }
+
+        function predictDiseaseManually(symptoms) {
+            // Placeholder logic: Manually assigning a disease based on symptoms
+            if (symptoms.includes('itching') && symptoms.includes('skin_rash')) {
+                return 'Fungal infection';
+            } else if (symptoms.includes('continuous_sneezing') && symptoms.includes('shivering')) {
+                return 'Common Cold';
+            } else if (symptoms.includes('mucoid_sputum') && symptoms.includes('blurred_and_distorted_vision')) {
+                return 'Psoriasis';
+            } else if (symptoms.includes('abdominal_pain') && symptoms.includes('muscle_weakness')) {
+                return 'Hypothyroidism';
+            } else if (symptoms.includes('weight_loss') && symptoms.includes('swollen_legs')) {
+                return 'Heart attack';
+            } else if (symptoms.includes('watering_from_eyes') && symptoms.includes('palpitations')) {
+                return 'Varicose veins';
+            } else if (symptoms.includes('internal_itching') && symptoms.includes('loss_of_smell')) {
+                return 'Urinary tract infection';
+            } else if (symptoms.includes('foul_smell_of urine')) {
+                return 'Diarrhea';
+            } else if (symptoms.includes('headache') && symptoms.includes('vomiting')) {
+                return 'Migraine';
+            } else {
+                return 'No Disease';
+            }
+        }
+    </script>
+</body>
+
+</html>

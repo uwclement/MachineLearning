@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaria Prediction</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #f7f7f7; /* Light gray background for the container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 100%; /* Make all input fields the same size */
+        }
+
+        input[type="submit"], button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #e6f7ff; /* Light blue background for the result container */
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Malaria Prediction</h1>
+    </header>
+    <div class="container">
+        {% if result %}
+        <div class="result-container">
+            <h1>{{ result }}</h1>
+        </div>
+        {% endif %}
+        <form method="POST" class="box">
+            {% csrf_token %}
+            <div class="form-sections">
+                <div>
+                    <label for="temperature">Temperature:</label>
+                    <input type="text" name="temperature" required placeholder="Enter temperature">
+
+                    <label for="parasite_density">Parasite Density:</label>
+                    <input type="text" name="parasite_density" required placeholder="Enter parasite density">
+
+                    <label for="whc_count">WHC Count:</label>
+                    <input type="text" name="whc_count" required placeholder="Enter whc count"><br>
+
+                    <label for="hb_level">hb_level:</label>
+                    <input type="text" name="hb_level" required placeholder="Enter hb_level"><br>
+
+                    <label for="hematocrit">hematocrit:</label>
+                    <input type="text" name="hematocrit" required placeholder="Enter hematocrit"><br>
+
+                    <label for="mean_cell_volume"> mean_cell_volume:</label>
+                    <input type="text" name="mean_cell_volume" required placeholder="Enter mean_cell_volume"><br>
+
+                    
+                    <label for="mean_corp_hb">mean_corp_hb:</label>
+                    <input type="text" name="mean_corp_hb" required placeholder="Enter mean_corp_hb"><br>
+
+                    <label for="mean_cell_hb_conc">mean_cell_hb_conc:</label>
+                    <input type="text" name="mean_cell_hb_conc" required placeholder="Enter mean_cell_hb_conc"><br>
+
+                    <label for="platelet_count">platelet_count:</label>
+                    <input type="text" name="platelet_count" required placeholder="Enter platelet_count"><br>
+
+                    <label for="platelet_distr_width">platelet_distr_width:</label>
+                    <input type="text" name="platelet_distr_width" required placeholder="Enter platelet_distr_width"><br>
+
+                    <label for="mean_platelet_vl">mean_platelet_vl:</label>
+                    <input type="text" name="mean_platelet_vl" required placeholder="Enter mean_platelet_vl"><br>
+
+                    <label for="neutrophils_count">neutrophils_count:</label>
+                    <input type="text" name="neutrophils_count" required placeholder="Enter neutrophils_count"><br>
+
+                    <label for="neutrophils_percent">neutrophils_percent:</label>
+                    <input type="text" name="neutrophils_percent" required placeholder="Enter neutrophils_percent"><br>
+
+                    <label for="lymphocytes_percent">lymphocytes_percent:</label>
+                    <input type="text" name="lymphocytes_percent" required placeholder="Enter lymphocytes_percent"><br>
+
+                    <label for="mixed_cells_percent">mixed_cells_percent:</label>
+                    <input type="text" name="mixed_cells_percent" required placeholder="Enter mixed_cells_percent"><br>
+
+                    <label for="lymphocytes_count">WHC Count:</label>
+                    <input type="text" name="lymphocytes_count" required placeholder="Enter lymphocytes_count"><br>
+
+                    <label for="mixed_cells_count">WHC Count:</label>
+                    <input type="text" name="mixed_cells_count" required placeholder="Enter mixed_cells_count"><br>
+
+                    <!-- Add similar label and input pairs for other fields -->
+                </div>
+            </div>
+            <input type="submit" class="input">
+            <button type="button" class="input" onclick="window.location.reload();">Refresh</button>
+        </form>
+    </div>
+    <footer>
+        &copy; 2023 2023 BigData Exam
+    </footer>
+    </footer>
+</body>
+</html>
